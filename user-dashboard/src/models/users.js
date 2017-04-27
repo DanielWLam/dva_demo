@@ -1,4 +1,5 @@
 import * as userService from '../services/users';
+
 export default {
   namespace: 'users',
   state: {
@@ -10,17 +11,17 @@ export default {
     save(state, { payload: { data: list, total, page } }) {
       return {
         ...state,
-        list, 
+        list,
         total,
-        page
-      }
-    }
+        page,
+      };
+    },
   },
   effects: {
     *fetch({ payload: { page = 1 } }, { call, put }) {
       const { data, headers } = yield call(userService.fetch, { page });
       yield put({ type: 'save', payload: { data, total: +headers['x-total-count'], page: +page } });
-    }
+    },
   },
   subscriptions: {
     setup({ dispatch, history }) {
@@ -28,10 +29,10 @@ export default {
         if (pathname === '/users') {
           dispatch({
             type: 'fetch',
-            payload: query
-          })
+            payload: query,
+          });
         }
-      })
-    }
+      });
+    },
   },
 };

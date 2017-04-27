@@ -4,9 +4,9 @@ import { Table, Pagination, Popconfirm } from 'antd';
 import styles from './Users.css';
 import { PAGE_SIZE } from '../../constants';
 
-function Users({ list: dataSource, total, page: current}) {
+function Users({ list: dataSource, total, page: current }) {
   function deleteHandler(id) {
-    console.warn('TODO: ${id}');
+    console.warn(`TODO: ${id}`);
   }
 
   const columns = [
@@ -19,12 +19,12 @@ function Users({ list: dataSource, total, page: current}) {
     {
       title: 'Email',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
     },
     {
       title: 'Website',
       dataIndex: 'website',
-      key: 'website'
+      key: 'website',
     },
     {
       title: 'Oparation',
@@ -36,9 +36,9 @@ function Users({ list: dataSource, total, page: current}) {
             <a href="">Delete</a>
           </Popconfirm>
         </span>
-      )
-    }
-  ]
+      ),
+    },
+  ];
   return (
     <div className={styles.normal}>
       <div>
@@ -47,13 +47,13 @@ function Users({ list: dataSource, total, page: current}) {
           dataSource={dataSource}
           rowKey={record => record.id}
           pagination={false}
-        ></Table>
+        />=
         <Pagination
           className="ant-table-pagination"
           total={total - 0}
           current={current - 0}
           pageSize={PAGE_SIZE}
-        ></Pagination>
+        />
       </div>
     </div>
   );
@@ -63,9 +63,9 @@ function mapStateToProps(state) {
   const { list, total, page } = state.users;
   return {
     list,
-    total, 
-    page
-  }
+    total,
+    page,
+  };
 }
 
 export default connect(mapStateToProps)(Users);

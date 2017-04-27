@@ -6,7 +6,7 @@ import UsersComponent from '../components/Users/Users.js';
 function Users() {
   return (
     <div className={styles.normal}>
-      <UsersComponent></UsersComponent>
+      <UsersComponent />
     </div>
   );
 }
